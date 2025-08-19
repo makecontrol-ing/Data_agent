@@ -92,14 +92,26 @@ def main():
                 
             with tab2:
                 st.subheader("Información del Dataset")
-                buffer = pd.io.formats.info.get_info_summary()
                 info_df = pd.DataFrame({
                     'Columna': df.columns,
                     'Tipo': df.dtypes.astype(str),
                     'No Nulos': df.count(),
-                    'Nulos': df.isnull().sum()
+                    'Nulos': df.isnull().sum(),
+                    '% Nulos': (df.isnull().sum() / len(df) * 100).round(2)
                 })
                 st.dataframe(info_df, use_container_width=True)
+                
+                # Mostrar información adicional del dataset
+                st.write("**Resumen del Dataset:**")
+                col1, col2, col3, col4 = st.columns(4)
+                with col1:
+                    st.metric("Memoria (MB)", f"{df.memory_usage(deep=True).sum() / 1024 / 1024:.2f}")
+                with col2:
+                    st.metric("Columnas Numéricas", len(df.select_dtypes(include=['number']).columns))
+                with col3:
+                    st.metric("Columnas Texto", len(df.select_dtypes(include=['object']).columns))
+                with col4:
+                    st.metric("Valores Únicos Totales", df.nunique().sum())
                 
             with tab3:
                 st.subheader("Estadísticas Descriptivas")

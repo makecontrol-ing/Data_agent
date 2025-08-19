@@ -14,7 +14,7 @@ def main():
         layout="wide"
     )
     
-    st.title("📊 Análisis de Datos con LangChain y Pandas")
+    st.title("📊 Análisis de Datos")
     st.markdown("**Carga tu archivo CSV/XLS y haz preguntas sobre tus datos usando IA**")
     
     # Sidebar para configuración
@@ -49,7 +49,6 @@ def main():
     if not openai_api_key:
         st.warning("⚠️ Por favor, ingresa tu API Key de OpenAI en la barra lateral.")
         st.info("Puedes obtener tu API key en: https://platform.openai.com/api-keys")
-        return
     
     # Configurar la variable de entorno
     os.environ["OPENAI_API_KEY"] = openai_api_key

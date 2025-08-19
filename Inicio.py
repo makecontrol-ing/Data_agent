@@ -229,10 +229,8 @@ def main():
         st.subheader("ℹ️ Sobre esta aplicación")
         st.markdown("""
         Esta aplicación utiliza:
-        - **Streamlit** para la interfaz web
-        - **LangChain** para la gestión de agentes IA
+        
         - **OpenAI GPT** para el procesamiento de lenguaje natural
-        - **Pandas** para el análisis de datos
         
         **Funcionalidades:**
         - Carga archivos CSV y Excel
